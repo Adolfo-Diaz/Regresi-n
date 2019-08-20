@@ -1,0 +1,11 @@
+#############clase#############
+sxx=sum((x-mean(x))^2)
+sxy=sum((x-mean(x))*(y-mean(y)))
+sxy
+b1=(sxy)/(sxx)
+b1
+bo=mean(y)-b1*mean(x)
+bo
+# La recta sale tamién ocupoando
+lm(y~x)
+##la recta ajustada es y=75.2-0.2093x
