@@ -1,3 +1,7 @@
+x=c(132,129,120,113.2,105,92,84,83.2,88.4,59,80,81.5,71,69.2)
+y=c(46,48,51,52.1,54,52,59,58.7,61.6,64,61.4,54.6,58.8,58)
+plot(x,y)
+
 #############clase#############
 sxx=sum((x-mean(x))^2)
 sxy=sum((x-mean(x))*(y-mean(y)))
@@ -9,3 +13,29 @@ bo
 # La recta sale tamién ocupoando
 lm(y~x)
 ##la recta ajustada es y=75.2-0.2093x
+################21/08/2019##############
+y1=bo+b1*70
+y1
+y2=bo+b1*40
+y2
+y3=bo+b1*55
+y3
+install.packages("ggplot2")
+require(ggplot2)
+abline(mod1)
+
+rr=predict(mod1)
+
+a=70
+b=40
+c=55
+
+qplot(x,y,geom=c("point"),method = "lm")+
+geom_line(aes(y=rr),lwd=1,color="blue")+
+geom_point(aes(y1,a,col="pink"))+
+geom_point(aes(y2,b,col="purple"))+
+geom_point(aes(y3,c,col="grey"))
+
+names(mod1)
+
+names(rr)
