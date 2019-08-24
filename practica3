@@ -1,0 +1,40 @@
+base1 <- read.csv("file:///C:/Users/ALUMNO-C20/Documents/TR_PERSONA15.CSV")
+#importar base csv
+ls (base1)#lista de la base (variables dentro de la base)
+class (base1$SEXO)#para ver la propiedad de la variable
+x=c(3,4,5)
+y=c(7,4,2)
+base2=data.frame(x,y)
+class(base2$y)#para cambiar la propiedead en asnumeric 
+table(base1$SEXO)
+head(base1)#da los primeros 10 datos(renglones) de la base
+install.packages("questionr")
+require(questionr)
+sum(wtd.table (base1$SEXO,weights = base1$FACTOR))#suma de una
+#table expandida
+table (base1$MUN)
+table (base1$EDAD)
+base1$gpoedad = ifelse (base1$EDAD <= 14, 1, 
+                        ifelse (base1$EDAD >= 15 & 
+                                 base1$EDAD <= 29, 2,
+                        ifelse (base1$EDAD >= 30 &
+                                  base1$EDAD<=99, 3,4)))
+#agrupando las edades
+table(base1$gpoedad)
+
+aculco = subset (base1, base1$NOM_MUN == "Aculco")#hace una
+#base con los datos de aculco, con el nombre aculco
+
+metepec = subset (base1, base1$NOM_MUN == "Metepec")
+
+vallebravo = subset (base1, base1$NOM_MUN == "Valle de Bravo")
+
+valle_aculco = subset (base1, base1$NOM_MUN == "Aculco" |
+                         base1$NOM_MUN == "Valle de Bravo")
+# | personas que viven en aculco o valle
+#no se pone & porque no viven en aculco y en valle
+
+tlatlaya = subset (base1, base1$NOM_MUN == "Tlatlaya")
+
+met_tlat = subset (base1, base1$NOM_MUN == "Metepec" |
+                     base1$NOM_MUN == "Tlatlaya" )
